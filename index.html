@@ -1,42 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GSC.Rocks homepage">
-    <meta name="keywords" content="GSC Rocks, Liam, GSC, Rocks">
-    <title>GSC.Rocks</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title> GSCMinify </title>
+    <meta name="description" content="GSCMinify is a mangler/minifier for the GSC scripting language." />
+    <meta name="keywords" content="GSCMinify, GSC, Minify, Mangle, Infinity Loader, IL, Call Of Duty, Optimiser" />
+    <meta name="author" content="Liam" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
     <style>
-        #loader {position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;background:black;opacity:1;pointer-events:none;transition:opacity 0.25s ease-in-out 0.25s;}
-        .loader .logo { position:relative; top:40%; left:50%; margin-left:-30px !important; margin-top:-30px !important; font-size:30px !important; color:#fff !important; }
-        .loader .logo:before { position:absolute; top:10px; left:19px; height:1px; width:1px; display:inline-block; border-radius:0; content:""; box-shadow:0 0 rgba(0, 0, 0, 0), 0 1px rgba(0, 0, 0, 0), 0 2px rgba(255, 255, 255, 0.01), 0 3px rgba(255, 255, 255, 0.23), 0 4px rgba(255, 255, 255, 0.55), 0 5px rgba(255, 255, 255, 0.76), 0 6px rgba(255, 255, 255, 0.89), 0 7px rgba(255, 255, 255, 0.89), 0 8px rgba(255, 255, 255, 0.89), 0 9px rgba(255, 255, 255, 0.89), 0 10px rgba(255, 255, 255, 0.89), 0 11px rgba(255, 255, 255, 0.89), 0 12px rgba(255, 255, 255, 0.89), 0 13px rgba(255, 255, 255, 0.89), 0 14px rgba(255, 255, 255, 0.89), 0 15px rgba(255, 255, 255, 0.89), 0 16px rgba(255, 255, 255, 0.89), 0 17px rgba(255, 255, 255, 0.89), 0 18px rgba(255, 255, 255, 0.89), 0 19px rgba(255, 255, 255, 0.89), 0 20px rgba(255, 255, 255, 0.89), 0 21px rgba(255, 255, 255, 0.89), 0 22px rgba(255, 255, 255, 0.89), 0 23px rgba(255, 255, 255, 0.89), 0 24px rgba(255, 255, 255, 0.89), 0 25px rgba(255, 255, 255, 0.89), 0 26px rgba(255, 255, 255, 0.89), 0 27px rgba(255, 255, 255, 0.89), 0 28px rgba(255, 255, 255, 0.89), 0 29px rgba(255, 255, 255, 0.89), 0 30px rgba(255, 255, 255, 0.8), 0 31px rgba(255, 255, 255, 0.56), 0 32px rgba(255, 255, 255, 0.29), 0 33px rgba(255, 255, 255, 0.04), 0 34px rgba(0, 0, 0, 0), 0 35px rgba(0, 0, 0, 0), 1px 0 rgba(0, 0, 0, 0), 1px 1px rgba(255, 255, 255, 0.02), 1px 2px rgba(255, 255, 255, 0.45), 1px 3px rgba(255, 255, 255, 0.96), 1px 4px #ffffff, 1px 5px #ffffff, 1px 6px #ffffff, 1px 7px #ffffff, 1px 8px #ffffff, 1px 9px #ffffff, 1px 10px #ffffff, 1px 11px #ffffff, 1px 12px #ffffff, 1px 13px #ffffff, 1px 14px #ffffff, 1px 15px #ffffff, 1px 16px #ffffff, 1px 17px #ffffff, 1px 18px #ffffff, 1px 19px #ffffff, 1px 20px #ffffff, 1px 21px #ffffff, 1px 22px #ffffff, 1px 23px #ffffff, 1px 24px #ffffff, 1px 25px #ffffff, 1px 26px #ffffff, 1px 27px #ffffff, 1px 28px #ffffff, 1px 29px #ffffff, 1px 30px #ffffff, 1px 31px #ffffff, 1px 32px #ffffff, 1px 33px rgba(255, 255, 255, 0.59), 1px 34px rgba(255, 255, 255, 0.05), 1px 35px rgba(0, 0, 0, 0), 2px 0 rgba(0, 0, 0, 0), 2px 1px rgba(255, 255, 255, 0.36), 2px 2px #ffffff, 2px 3px #ffffff, 2px 4px #ffffff, 2px 5px #ffffff, 2px 6px #ffffff, 2px 7px #ffffff, 2px 8px #ffffff, 2px 9px #ffffff, 2px 10px #ffffff, 2px 11px #ffffff, 2px 12px #ffffff, 2px 13px #ffffff, 2px 14px #ffffff, 2px 15px #ffffff, 2px 16px #ffffff, 2px 17px #ffffff, 2px 18px #ffffff, 2px 19px #ffffff, 2px 20px #ffffff, 2px 21px #ffffff, 2px 22px #ffffff, 2px 23px #ffffff, 2px 24px #ffffff, 2px 25px #ffffff, 2px 26px #ffffff, 2px 27px #ffffff, 2px 28px #ffffff, 2px 29px #ffffff, 2px 30px #ffffff, 2px 31px #ffffff, 2px 32px #ffffff, 2px 33px #ffffff, 2px 34px rgba(255, 255, 255, 0.46), 2px 35px rgba(255, 255, 255, 0.01), 3px 0 rgba(255, 255, 255, 0.1), 3px 1px rgba(255, 255, 255, 0.83), 3px 2px #ffffff, 3px 3px #ffffff, 3px 4px #ffffff, 3px 5px #ffffff, 3px 6px #ffffff, 3px 7px #ffffff, 3px 8px #ffffff, 3px 9px #ffffff, 3px 10px #ffffff, 3px 11px #ffffff, 3px 12px #ffffff, 3px 13px #ffffff, 3px 14px #ffffff, 3px 15px #ffffff, 3px 16px #ffffff, 3px 17px #ffffff, 3px 18px #ffffff, 3px 19px #ffffff, 3px 20px #ffffff, 3px 21px #ffffff, 3px 22px #ffffff, 3px 23px #ffffff, 3px 24px #ffffff, 3px 25px #ffffff, 3px 26px #ffffff, 3px 27px #ffffff, 3px 28px #ffffff, 3px 29px #ffffff, 3px 30px #ffffff, 3px 31px #ffffff, 3px 32px #ffffff, 3px 33px #ffffff, 3px 34px rgba(255, 255, 255, 0.9), 3px 35px rgba(255, 255, 255, 0.13), 4px 0 rgba(255, 255, 255, 0.34), 4px 1px #ffffff, 4px 2px #ffffff, 4px 3px #ffffff, 4px 4px #ffffff, 4px 5px #ffffff, 4px 6px #ffffff, 4px 7px #ffffff, 4px 8px #ffffff, 4px 9px #ffffff, 4px 10px #ffffff, 4px 11px #ffffff, 4px 12px #ffffff, 4px 13px #ffffff, 4px 14px #ffffff, 4px 15px #ffffff, 4px 16px #ffffff, 4px 17px #ffffff, 4px 18px #ffffff, 4px 19px #ffffff, 4px 20px #ffffff, 4px 21px #ffffff, 4px 22px #ffffff, 4px 23px #ffffff, 4px 24px #ffffff, 4px 25px #ffffff, 4px 26px #ffffff, 4px 27px #ffffff, 4px 28px #ffffff, 4px 29px #ffffff, 4px 30px #ffffff, 4px 31px #ffffff, 4px 32px #ffffff, 4px 33px #ffffff, 4px 34px #ffffff, 4px 35px rgba(255, 255, 255, 0.38), 5px 0 rgba(255, 255, 255, 0.57), 5px 1px #ffffff, 5px 2px #ffffff, 5px 3px #ffffff, 5px 4px #ffffff, 5px 5px #ffffff, 5px 6px #ffffff, 5px 7px #ffffff, 5px 8px #ffffff, 5px 9px #ffffff, 5px 10px #ffffff, 5px 11px #ffffff, 5px 12px #ffffff, 5px 13px #ffffff, 5px 14px #ffffff, 5px 15px #ffffff, 5px 16px #ffffff, 5px 17px #ffffff, 5px 18px rgba(255, 255, 255, 0.99), 5px 19px rgba(255, 255, 255, 0.77), 5px 20px rgba(255, 255, 255, 0.67), 5px 21px rgba(255, 255, 255, 0.75), 5px 22px rgba(255, 255, 255, 0.74), 5px 23px rgba(255, 255, 255, 0.73), 5px 24px rgba(255, 255, 255, 0.73), 5px 25px rgba(255, 255, 255, 0.73), 5px 26px rgba(255, 255, 255, 0.73), 5px 27px rgba(255, 255, 255, 0.73), 5px 28px rgba(255, 255, 255, 0.73), 5px 29px rgba(255, 255, 255, 0.73), 5px 30px rgba(255, 255, 255, 0.72), 5px 31px rgba(255, 255, 255, 0.67), 5px 32px rgba(255, 255, 255, 0.87), 5px 33px #ffffff, 5px 34px #ffffff, 5px 35px rgba(255, 255, 255, 0.54), 6px 0 rgba(255, 255, 255, 0.73), 6px 1px #ffffff, 6px 2px #ffffff, 6px 3px #ffffff, 6px 4px #ffffff, 6px 5px #ffffff, 6px 6px #ffffff, 6px 7px #ffffff, 6px 8px #ffffff, 6px 9px #ffffff, 6px 10px #ffffff, 6px 11px #ffffff, 6px 12px #ffffff, 6px 13px #ffffff, 6px 14px #ffffff, 6px 15px #ffffff, 6px 16px #ffffff, 6px 17px #ffffff, 6px 18px rgba(255, 255, 255, 0.9), 6px 19px rgba(255, 255, 255, 0.2), 6px 20px rgba(255, 255, 255, 0.05), 6px 21px rgba(255, 255, 255, 0.11), 6px 22px rgba(255, 255, 255, 0.1), 6px 23px rgba(255, 255, 255, 0.1), 6px 24px rgba(255, 255, 255, 0.1), 6px 25px rgba(255, 255, 255, 0.1), 6px 26px rgba(255, 255, 255, 0.1), 6px 27px rgba(255, 255, 255, 0.1), 6px 28px rgba(255, 255, 255, 0.1), 6px 29px rgba(255, 255, 255, 0.1), 6px 30px rgba(255, 255, 255, 0.09), 6px 31px rgba(255, 255, 255, 0.02), 6px 32px rgba(255, 255, 255, 0.56), 6px 33px #ffffff, 6px 34px #ffffff, 6px 35px rgba(255, 255, 255, 0.6), 7px 0 rgba(255, 255, 255, 0.75), 7px 1px #ffffff, 7px 2px #ffffff, 7px 3px #ffffff, 7px 4px #ffffff, 7px 5px #ffffff, 7px 6px rgba(255, 255, 255, 0.81), 7px 7px rgba(255, 255, 255, 0.58), 7px 8px rgba(255, 255, 255, 0.58), 7px 9px rgba(255, 255, 255, 0.59), 7px 10px rgba(255, 255, 255, 0.59), 7px 11px rgba(255, 255, 255, 0.56), 7px 12px rgba(255, 255, 255, 0.73), 7px 13px #ffffff, 7px 14px #ffffff, 7px 15px #ffffff, 7px 16px #ffffff, 7px 17px #ffffff, 7px 18px rgba(255, 255, 255, 0.8), 7px 19px rgba(255, 255, 255, 0.02), 7px 20px rgba(0, 0, 0, 0), 7px 21px rgba(0, 0, 0, 0), 7px 22px rgba(0, 0, 0, 0), 7px 23px rgba(0, 0, 0, 0), 7px 24px rgba(0, 0, 0, 0), 7px 25px rgba(0, 0, 0, 0), 7px 26px rgba(0, 0, 0, 0), 7px 27px rgba(0, 0, 0, 0), 7px 28px rgba(0, 0, 0, 0), 7px 29px rgba(0, 0, 0, 0), 7px 30px rgba(0, 0, 0, 0), 7px 31px rgba(0, 0, 0, 0), 7px 32px rgba(255, 255, 255, 0.58), 7px 33px #ffffff, 7px 34px #ffffff, 7px 35px rgba(255, 255, 255, 0.64), 8px 0 rgba(255, 255, 255, 0.74), 8px 1px #ffffff, 8px 2px #ffffff, 8px 3px #ffffff, 8px 4px #ffffff, 8px 5px #ffffff, 8px 6px rgba(255, 255, 255, 0.34), 8px 7px rgba(0, 0, 0, 0), 8px 8px rgba(255, 255, 255, 0.02), 8px 9px rgba(255, 255, 255, 0.02), 8px 10px rgba(255, 255, 255, 0.01), 8px 11px rgba(255, 255, 255, 0.05), 8px 12px rgba(255, 255, 255, 0.6), 8px 13px #ffffff, 8px 14px #ffffff, 8px 15px #ffffff, 8px 16px #ffffff, 8px 17px #ffffff, 8px 18px rgba(255, 255, 255, 0.94), 8px 19px rgba(255, 255, 255, 0.32), 8px 20px rgba(0, 0, 0, 0), 8px 21px rgba(0, 0, 0, 0), 8px 22px rgba(0, 0, 0, 0), 8px 23px rgba(255, 255, 255, 0.27), 8px 24px rgba(255, 255, 255, 0.53), 8px 25px rgba(255, 255, 255, 0.16), 8px 26px rgba(255, 255, 255, 0.44), 8px 27px rgba(255, 255, 255, 0.6), 8px 28px rgba(255, 255, 255, 0.58), 8px 29px rgba(255, 255, 255, 0.58), 8px 30px rgba(255, 255, 255, 0.57), 8px 31px rgba(255, 255, 255, 0.6), 8px 32px rgba(255, 255, 255, 0.89), 8px 33px #ffffff, 8px 34px #ffffff, 8px 35px rgba(255, 255, 255, 0.66), 9px 0 rgba(255, 255, 255, 0.73), 9px 1px #ffffff, 9px 2px #ffffff, 9px 3px #ffffff, 9px 4px #ffffff, 9px 5px #ffffff, 9px 6px rgba(255, 255, 255, 0.33), 9px 7px rgba(0, 0, 0, 0), 9px 8px rgba(255, 255, 255, 0.02), 9px 9px rgba(255, 255, 255, 0.02), 9px 10px rgba(0, 0, 0, 0), 9px 11px rgba(255, 255, 255, 0.14), 9px 12px rgba(255, 255, 255, 0.82), 9px 13px #ffffff, 9px 14px #ffffff, 9px 15px #ffffff, 9px 16px #ffffff, 9px 17px #ffffff, 9px 18px #ffffff, 9px 19px rgba(255, 255, 255, 0.64), 9px 20px rgba(0, 0, 0, 0), 9px 21px rgba(0, 0, 0, 0), 9px 22px rgba(0, 0, 0, 0), 9px 23px rgba(255, 255, 255, 0.5), 9px 24px rgba(255, 255, 255, 0.91), 9px 25px rgba(255, 255, 255, 0.44), 9px 26px rgba(255, 255, 255, 0.89), 9px 27px #ffffff, 9px 28px #ffffff, 9px 29px #ffffff, 9px 30px #ffffff, 9px 31px #ffffff, 9px 32px #ffffff, 9px 33px #ffffff, 9px 34px #ffffff, 9px 35px rgba(255, 255, 255, 0.66), 10px 0 rgba(255, 255, 255, 0.72), 10px 1px #ffffff, 10px 2px #ffffff, 10px 3px #ffffff, 10px 4px #ffffff, 10px 5px #ffffff, 10px 6px rgba(255, 255, 255, 0.8), 10px 7px rgba(255, 255, 255, 0.55), 10px 8px rgba(255, 255, 255, 0.56), 10px 9px rgba(255, 255, 255, 0.57), 10px 10px rgba(255, 255, 255, 0.19), 10px 11px rgba(255, 255, 255, 0.15), 10px 12px rgba(255, 255, 255, 0.88), 10px 13px #ffffff, 10px 14px #ffffff, 10px 15px #ffffff, 10px 16px #ffffff, 10px 17px #ffffff, 10px 18px rgba(255, 255, 255, 0.97), 10px 19px rgba(255, 255, 255, 0.42), 10px 20px rgba(0, 0, 0, 0), 10px 21px rgba(0, 0, 0, 0), 10px 22px rgba(255, 255, 255, 0.13), 10px 23px rgba(255, 255, 255, 0.4), 10px 24px rgba(255, 255, 255, 0.44), 10px 25px rgba(255, 255, 255, 0.6), 10px 26px rgba(255, 255, 255, 0.97), 10px 27px #ffffff, 10px 28px #ffffff, 10px 29px #ffffff, 10px 30px #ffffff, 10px 31px #ffffff, 10px 32px #ffffff, 10px 33px #ffffff, 10px 34px #ffffff, 10px 35px rgba(255, 255, 255, 0.67), 11px 0 rgba(255, 255, 255, 0.71), 11px 1px #ffffff, 11px 2px #ffffff, 11px 3px #ffffff, 11px 4px #ffffff, 11px 5px #ffffff, 11px 6px #ffffff, 11px 7px #ffffff, 11px 8px #ffffff, 11px 9px rgba(255, 255, 255, 0.97), 11px 10px rgba(255, 255, 255, 0.38), 11px 11px rgba(255, 255, 255, 0.15), 11px 12px rgba(255, 255, 255, 0.9), 11px 13px #ffffff, 11px 14px #ffffff, 11px 15px #ffffff, 11px 16px #ffffff, 11px 17px #ffffff, 11px 18px rgba(255, 255, 255, 0.88), 11px 19px rgba(255, 255, 255, 0.13), 11px 20px rgba(0, 0, 0, 0), 11px 21px rgba(255, 255, 255, 0.02), 11px 22px rgba(255, 255, 255, 0.63), 11px 23px #ffffff, 11px 24px rgba(255, 255, 255, 0.94), 11px 25px rgba(255, 255, 255, 0.99), 11px 26px #ffffff, 11px 27px #ffffff, 11px 28px #ffffff, 11px 29px #ffffff, 11px 30px #ffffff, 11px 31px #ffffff, 11px 32px #ffffff, 11px 33px #ffffff, 11px 34px #ffffff, 11px 35px rgba(255, 255, 255, 0.63), 12px 0 rgba(255, 255, 255, 0.59), 12px 1px #ffffff, 12px 2px #ffffff, 12px 3px #ffffff, 12px 4px #ffffff, 12px 5px #ffffff, 12px 6px #ffffff, 12px 7px #ffffff, 12px 8px #ffffff, 12px 9px rgba(255, 255, 255, 0.96), 12px 10px rgba(255, 255, 255, 0.34), 12px 11px rgba(255, 255, 255, 0.15), 12px 12px rgba(255, 255, 255, 0.9), 12px 13px #ffffff, 12px 14px #ffffff, 12px 15px #ffffff, 12px 16px #ffffff, 12px 17px #ffffff, 12px 18px rgba(255, 255, 255, 0.63), 12px 19px rgba(0, 0, 0, 0), 12px 20px rgba(0, 0, 0, 0), 12px 21px rgba(255, 255, 255, 0.11), 12px 22px rgba(255, 255, 255, 0.75), 12px 23px #ffffff, 12px 24px #ffffff, 12px 25px #ffffff, 12px 26px #ffffff, 12px 27px #ffffff, 12px 28px #ffffff, 12px 29px #ffffff, 12px 30px #ffffff, 12px 31px #ffffff, 12px 32px #ffffff, 12px 33px #ffffff, 12px 34px #ffffff, 12px 35px rgba(255, 255, 255, 0.51), 13px 0 rgba(255, 255, 255, 0.37), 13px 1px #ffffff, 13px 2px #ffffff, 13px 3px #ffffff, 13px 4px #ffffff, 13px 5px #ffffff, 13px 6px #ffffff, 13px 7px #ffffff, 13px 8px #ffffff, 13px 9px rgba(255, 255, 255, 0.97), 13px 10px rgba(255, 255, 255, 0.35), 13px 11px rgba(255, 255, 255, 0.13), 13px 12px rgba(255, 255, 255, 0.86), 13px 13px #ffffff, 13px 14px #ffffff, 13px 15px #ffffff, 13px 16px #ffffff, 13px 17px #ffffff, 13px 18px rgba(255, 255, 255, 0.62), 13px 19px rgba(0, 0, 0, 0), 13px 20px rgba(0, 0, 0, 0), 13px 21px rgba(255, 255, 255, 0.2), 13px 22px rgba(255, 255, 255, 0.87), 13px 23px #ffffff, 13px 24px #ffffff, 13px 25px #ffffff, 13px 26px #ffffff, 13px 27px #ffffff, 13px 28px #ffffff, 13px 29px #ffffff, 13px 30px #ffffff, 13px 31px #ffffff, 13px 32px #ffffff, 13px 33px #ffffff, 13px 34px #ffffff, 13px 35px rgba(255, 255, 255, 0.29), 14px 0 rgba(255, 255, 255, 0.11), 14px 1px rgba(255, 255, 255, 0.86), 14px 2px #ffffff, 14px 3px #ffffff, 14px 4px #ffffff, 14px 5px #ffffff, 14px 6px #ffffff, 14px 7px #ffffff, 14px 8px #ffffff, 14px 9px rgba(255, 255, 255, 0.97), 14px 10px rgba(255, 255, 255, 0.37), 14px 11px rgba(255, 255, 255, 0.04), 14px 12px rgba(255, 255, 255, 0.7), 14px 13px #ffffff, 14px 14px #ffffff, 14px 15px #ffffff, 14px 16px #ffffff, 14px 17px #ffffff, 14px 18px rgba(255, 255, 255, 0.92), 14px 19px rgba(255, 255, 255, 0.66), 14px 20px rgba(255, 255, 255, 0.58), 14px 21px rgba(255, 255, 255, 0.71), 14px 22px rgba(255, 255, 255, 0.98), 14px 23px #ffffff, 14px 24px #ffffff, 14px 25px #ffffff, 14px 26px #ffffff, 14px 27px #ffffff, 14px 28px #ffffff, 14px 29px #ffffff, 14px 30px #ffffff, 14px 31px #ffffff, 14px 32px #ffffff, 14px 33px #ffffff, 14px 34px rgba(255, 255, 255, 0.76), 14px 35px rgba(255, 255, 255, 0.07), 15px 0 rgba(255, 255, 255, 0), 15px 1px rgba(255, 255, 255, 0.39), 15px 2px #ffffff, 15px 3px #ffffff, 15px 4px #ffffff, 15px 5px #ffffff, 15px 6px #ffffff, 15px 7px #ffffff, 15px 8px #ffffff, 15px 9px rgba(255, 255, 255, 0.97), 15px 10px rgba(255, 255, 255, 0.39), 15px 11px rgba(0, 0, 0, 0), 15px 12px rgba(255, 255, 255, 0.42), 15px 13px #ffffff, 15px 14px #ffffff, 15px 15px #ffffff, 15px 16px #ffffff, 15px 17px #ffffff, 15px 18px #ffffff, 15px 19px #ffffff, 15px 20px #ffffff, 15px 21px #ffffff, 15px 22px #ffffff, 15px 23px #ffffff, 15px 24px #ffffff, 15px 25px #ffffff, 15px 26px #ffffff, 15px 27px #ffffff, 15px 28px #ffffff, 15px 29px #ffffff, 15px 30px #ffffff, 15px 31px #ffffff, 15px 32px #ffffff, 15px 33px rgba(255, 255, 255, 0.97), 15px 34px rgba(255, 255, 255, 0.29), 15px 35px rgba(0, 0, 0, 0), 16px 0 rgba(0, 0, 0, 0), 16px 1px rgba(255, 255, 255, 0.03), 16px 2px rgba(255, 255, 255, 0.48), 16px 3px rgba(255, 255, 255, 0.97), 16px 4px #ffffff, 16px 5px #ffffff, 16px 6px #ffffff, 16px 7px #ffffff, 16px 8px #ffffff, 16px 9px rgba(255, 255, 255, 0.97), 16px 10px rgba(255, 255, 255, 0.4), 16px 11px rgba(0, 0, 0, 0), 16px 12px rgba(255, 255, 255, 0.08), 16px 13px rgba(255, 255, 255, 0.71), 16px 14px #ffffff, 16px 15px #ffffff, 16px 16px #ffffff, 16px 17px #ffffff, 16px 18px #ffffff, 16px 19px #ffffff, 16px 20px #ffffff, 16px 21px #ffffff, 16px 22px #ffffff, 16px 23px #ffffff, 16px 24px #ffffff, 16px 25px #ffffff, 16px 26px #ffffff, 16px 27px #ffffff, 16px 28px #ffffff, 16px 29px #ffffff, 16px 30px #ffffff, 16px 31px #ffffff, 16px 32px rgba(255, 255, 255, 0.95), 16px 33px rgba(255, 255, 255, 0.41), 16px 34px rgba(255, 255, 255, 0.01), 16px 35px rgba(0, 0, 0, 0), 17px 0 rgba(0, 0, 0, 0), 17px 1px rgba(0, 0, 0, 0), 17px 2px rgba(255, 255, 255, 0.01), 17px 3px rgba(255, 255, 255, 0.25), 17px 4px rgba(255, 255, 255, 0.58), 17px 5px rgba(255, 255, 255, 0.76), 17px 6px rgba(255, 255, 255, 0.88), 17px 7px rgba(255, 255, 255, 0.89), 17px 8px rgba(255, 255, 255, 0.89), 17px 9px rgba(255, 255, 255, 0.89), 17px 10px rgba(255, 255, 255, 0.35), 17px 11px rgba(0, 0, 0, 0), 17px 12px rgba(0, 0, 0, 0), 17px 13px rgba(255, 255, 255, 0.11), 17px 14px rgba(255, 255, 255, 0.6), 17px 15px rgba(255, 255, 255, 0.9), 17px 16px rgba(255, 255, 255, 0.9), 17px 17px rgba(255, 255, 255, 0.89), 17px 18px rgba(255, 255, 255, 0.89), 17px 19px rgba(255, 255, 255, 0.89), 17px 20px rgba(255, 255, 255, 0.89), 17px 21px rgba(255, 255, 255, 0.89), 17px 22px rgba(255, 255, 255, 0.89), 17px 23px rgba(255, 255, 255, 0.89), 17px 24px rgba(255, 255, 255, 0.89), 17px 25px rgba(255, 255, 255, 0.89), 17px 26px rgba(255, 255, 255, 0.89), 17px 27px rgba(255, 255, 255, 0.89), 17px 28px rgba(255, 255, 255, 0.89), 17px 29px rgba(255, 255, 255, 0.85), 17px 30px rgba(255, 255, 255, 0.75), 17px 31px rgba(255, 255, 255, 0.57), 17px 32px rgba(255, 255, 255, 0.23), 17px 33px rgba(255, 255, 255, 0.01), 17px 34px rgba(0, 0, 0, 0), 17px 35px rgba(0, 0, 0, 0); }
-
-        .loader .logo .spinner { position:relative !important; display:block !important; font-size:5px !important; border:0.6em solid rgba(153, 153, 153, 0.9); border-left:0.6em solid rgba(255, 255, 255, 0.9); border-radius:50%; }
-        .loader .logo .spinner,
-        .loader .logo .spinner:after { width:10em; height:10em;  }
-        /*.loader .logo:after,*/
-        .loader .logo .spinner { box-shadow:0px 0px 1px #999; -moz-filter:blur(0.1em); filter:blur(0.1em); }
-
-        .loader .logo .spinner {
-            -webkit-animation:playspinner 0.8s infinite linear;
-            animation:playspinner 0.8s infinite linear;
-        }
-        @-webkit-keyframes playspinner {
-            0%    { -webkit-transform:rotate(0deg); transform:rotate(0deg); }
-            100%  { -webkit-transform:rotate(360deg); transform:rotate(360deg); }
-        }
-        @keyframes playspinner {
-            0%    { -webkit-transform:rotate(0deg); transform:rotate(0deg); }
-            100%  { -webkit-transform:rotate(360deg); transform:rotate(360deg); }
-        }
+      .gradient {
+        background: linear-gradient(90deg, #DEB841 0%, #FF5714 100%);
+      }
+      .gradient1 {
+        background: linear-gradient(90deg, #8BC3C3 0%, #42516F 100%);
+      }
     </style>
-</head>
-<body>
-    <div id="loader" class="loader"><div class="logo"><div class="spinner"></div></div></div>
+  </head>
+  <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+    <!--Nav-->
+    <nav id="header" class="fixed w-full z-30 top-0 text-white">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+        <div class="pl-4 flex items-center">
+          <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.86 38.75">
+              <g>
+                <polyline points="1.5 32.14 16.82 16.82 1.5 1.5" style="stroke:#2a2a31;stroke-miterlimit:10;fill:none;stroke-linecap:round;stroke-width:4px;" />
+                <line class="code-blink" x1="20.93" y1="37.25" x2="41.36" y2="37.25" style="stroke:#ea3970;stroke-linejoin:round;fill:none;stroke-linecap:round;stroke-width:4px;" />
+              </g>
+            </svg>
+            GSCMinify
+          </a>
+        </div>
+        <div class="block lg:hidden pr-4">
+          <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#about">About</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#testimonials">Testimonials</a>
+            </li>
+          </ul>
+          <a href="#purchase" id="navAction" class="mx-auto lg:mx-0 no-underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Purchase
+          </a>
+        </div>
+      </div>
+      <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+    </nav>
+    <!--Hero-->
+    <div class="pt-24">
+      <div class="container px-3 mx-auto flex flex-wrap flex-col mb-12 md:flex-row items-center">
+        <!--Left Col-->
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+          <h1 class="my-4 text-5xl font-bold leading-tight">
+            Mangle and Minfiy your scripts
+          </h1>
+          <p class="leading-normal text-2xl mb-8">
+            Protect your source, ready for distribution!
+          </p>
+          <a href="#purchase" class="mx-auto lg:mx-0 no-underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Purchase
+          </a>
+        </div>
+        <!--Right Col-->
+        <div class="w-full md:w-3/5 py-6 text-center">
+          <img class="w-full md:w-4/5 z-50" src="hero.png" />
+        </div>
+      </div>
+    </div>
+    <div class="relative -mt-12 lg:-mt-24">
+      <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
+            <path
+              d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+              opacity="0.100000001"
+            ></path>
+            <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
+          </g>
+          <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path
+              d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"
+            ></path>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <section class="bg-white border-b py-8" id="about">
+      <div class="container max-w-5xl mx-auto m-8">
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          About
+        </h1>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="flex flex-wrap">
+          <div class="w-5/6 sm:w-1/2 p-6">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+              Mangle your local functions
+            </h3>
+            <p class="text-gray-600 mb-8">
+              Mangle your locally defined functions to reduce code size and to help protect against copy-and-pasters.
+            </p>
+          </div>
+          <div class="w-full sm:w-1/2 p-6">
+            <svg class="w-full sm:h-64 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="533" viewBox="0 0 800 533" xml:space="preserve">
+              <defs>
+              </defs>
+              <g transform="matrix(1 0 0 1 400 266.5)"  >
+                <image style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(30,139,195); fill-rule: nonzero; opacity: 1;"  xlink:href="https://isoflat.com/isobuild/assets/images/samples/sample3.jpg" x="-400" y="-266.5" width="800" height="533"></image>
+                <rect x="-400" y="-266.5" width="800" height="533" style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-wrap flex-col-reverse sm:flex-row">
+          <div class="w-full sm:w-1/2 p-6 mt-6">
+            <svg class="w-5/6 sm:h-64 mx-auto" id="bb554b9e-b999-4ef3-b2f2-4c0395b94ae2" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="926.62165" height="600.08495" viewBox="0 0 926.62165 600.08495"><circle cx="150.53395" cy="254.87249" r="24.56103" fill="#ffb8b8"/><polygon points="67.543 549.197 73.762 559.763 117.474 540.803 108.295 525.21 67.543 549.197" fill="#ffb8b8"/><path d="M206.09566,694.4297,218.343,715.23658l.0005.00084A15.38605,15.38605,0,0,1,212.888,736.302l-.43091.25362L192.4047,702.48857Z" transform="translate(-136.68918 -149.95753)" fill="#2f2e41"/><polygon points="139.6 587.26 151.86 587.259 157.692 539.971 139.598 539.972 139.6 587.26" fill="#ffb8b8"/><path d="M273.16223,733.21466l24.14379-.001h.001a15.38605,15.38605,0,0,1,15.38648,15.38623v.5l-39.53052.00146Z" transform="translate(-136.68918 -149.95753)" fill="#2f2e41"/><path d="M227.00063,708.56723a4.49318,4.49318,0,0,1-3.624-1.833l-11.82373-16.05859a4.49961,4.49961,0,0,1,1.12451-6.41016l52.614-35.1416-31.74659-83.47461L301.434,571.2518l2.28662,71.7334A36.04579,36.04579,0,0,1,285.67544,675.409l-56.42652,32.55371A4.486,4.486,0,0,1,227.00063,708.56723Z" transform="translate(-136.68918 -149.95753)" fill="#2f2e41"/><path d="M276.65933,727.617a4.49986,4.49986,0,0,1-4.48877-4.33984l-2.488-69.88184,30.80835-1.623-2.45313,70.38379a4.48729,4.48729,0,0,1-4.1997,4.333l-16.87281,1.11817C276.86294,727.6141,276.76089,727.617,276.65933,727.617Z" transform="translate(-136.68918 -149.95753)" fill="#2f2e41"/><path d="M309.29092,585.12875c-7.83838,0-35.21656-8.8164-44.72119-11.959-1.42188,1.13769-9.23316,6.97851-18.35108,5.91113-5.626-.66016-10.57886-3.84473-14.72095-9.46582-9.147-12.41406,2.15064-65.65137,13.239-108.126a34.26782,34.26782,0,0,1,40.52856-24.87988h0a34.57137,34.57137,0,0,1,26.08765,25.37793c2.08765,8.49805.29175,18.49414-1.01953,25.79395-.61646,3.43164-1.10352,6.14257-.937,7.47461.64355,5.14843,4.21875,85.8916,1.91992,89.33984C311.07143,584.96274,310.36343,585.12875,309.29092,585.12875Z" transform="translate(-136.68918 -149.95753)" fill="#6c63ff"/><path d="M280.616,585.27177a10.74269,10.74269,0,0,0,.9416-16.44569l.48534-97.84356-23.04478,3.8374,6.76925,94.97037A10.80091,10.80091,0,0,0,280.616,585.27177Z" transform="translate(-136.68918 -149.95753)" fill="#ffb8b8"/><path d="M285.946,533.81821H261.12417a4.51352,4.51352,0,0,1-4.5-4.459l-.60938-67.292a17.603,17.603,0,1,1,35.20411.043L290.4457,529.37A4.51547,4.51547,0,0,1,285.946,533.81821Z" transform="translate(-136.68918 -149.95753)" fill="#6c63ff"/><path d="M280.96926,429.28873c-11.24529.02059-21.85416-8.868-23.80286-19.94323a28.67148,28.67148,0,0,1,.91927-13.01372A34.95394,34.95394,0,0,1,306.021,374.379c3.00831,1.36131,5.97145,3.31645,7.3489,6.31741s.51535,7.19528-2.49791,8.54561c-1.96916.88242-4.44023.4491-6.18719,1.71573-2.50928,1.81937-1.86334,5.69129-.74286,8.58112s2.38776,6.38691.50947,8.85239c-1.75023,2.29739-5.24872,2.22609-8.00436,1.36137s-5.47557-2.31277-8.34864-2.01822c-4.1904.42961-7.20172,4.59773-7.7591,8.77306s.75474,8.34892,2.05018,12.35714Z" transform="translate(-136.68918 -149.95753)" fill="#2f2e41"/><path d="M395.68918,750.04247h-258a1,1,0,1,1,0-2h258a1,1,0,0,1,0,2Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M1046.81082,584.50538H405.97232a16.51868,16.51868,0,0,1-16.5-16.5V172.85157a12.10185,12.10185,0,0,1,12.08789-12.08838h649.4535a12.31111,12.31111,0,0,1,12.29711,12.29736V568.00538A16.51867,16.51867,0,0,1,1046.81082,584.50538Z" transform="translate(-136.68918 -149.95753)" fill="#f2f2f2"/><path d="M1026.091,563.67306H428.84627c-8.755,0-15.87757-6.66993-15.87757-14.86817v-344.105c0-6.08008,5.278-11.02685,11.76563-11.02685H1030.008c6.59521,0,11.96069,5.02832,11.96069,11.20849V548.80489C1041.9687,557.00313,1034.8459,563.67306,1026.091,563.67306Z" transform="translate(-136.68918 -149.95753)" fill="#fff"/><path d="M1063.08109,174.90772H389.24076v-8.40039a16.57376,16.57376,0,0,1,16.56-16.5498H1046.521a16.57368,16.57368,0,0,1,16.56006,16.5498Z" transform="translate(-136.68918 -149.95753)" fill="#3f3d56"/><circle cx="282.64694" cy="12.5" r="4.28342" fill="#fff"/><circle cx="298.90575" cy="12.5" r="4.28342" fill="#fff"/><circle cx="315.16455" cy="12.5" r="4.28342" fill="#fff"/><path d="M713.29967,268.912H596.49153a6.56614,6.56614,0,0,1,0-13.13228H713.29967a6.56614,6.56614,0,1,1,0,13.13228Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M858.44587,268.912H741.63774a6.56614,6.56614,0,0,1,0-13.13228H858.44587a6.56614,6.56614,0,1,1,0,13.13228Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M858.44587,293.79419H655.24119a6.56613,6.56613,0,1,1,0-13.13227H858.44587a6.56613,6.56613,0,1,1,0,13.13227Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M713.29967,243.68419H596.49153a6.56614,6.56614,0,0,1,0-13.13227H713.29967a6.56614,6.56614,0,1,1,0,13.13227Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M777.5787,244.02978H744.40243a6.56614,6.56614,0,0,1,0-13.13228H777.5787a6.56614,6.56614,0,1,1,0,13.13228Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M629.66781,293.79419H596.49153a6.56614,6.56614,0,0,1,0-13.13227h33.17628a6.56614,6.56614,0,1,1,0,13.13227Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M713.29967,501.912H596.49153a6.56614,6.56614,0,0,1,0-13.13228H713.29967a6.56614,6.56614,0,1,1,0,13.13228Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M858.44587,501.912H741.63774a6.56614,6.56614,0,0,1,0-13.13228H858.44587a6.56614,6.56614,0,1,1,0,13.13228Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M858.44587,526.79419H655.24119a6.56613,6.56613,0,1,1,0-13.13227H858.44587a6.56614,6.56614,0,1,1,0,13.13227Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M713.29967,476.68419H596.49153a6.56613,6.56613,0,0,1,0-13.13227H713.29967a6.56613,6.56613,0,1,1,0,13.13227Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M777.5787,477.02978H744.40243a6.56614,6.56614,0,0,1,0-13.13228H777.5787a6.56614,6.56614,0,0,1,0,13.13228Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M629.66781,526.79419H596.49153a6.56613,6.56613,0,0,1,0-13.13227h33.17628a6.56614,6.56614,0,1,1,0,13.13227Z" transform="translate(-136.68918 -149.95753)" fill="#ccc"/><path d="M682.793,431.41924a9.39692,9.39692,0,0,1-6.62352-2.7101l-43.90868-43.35929a9.1516,9.1516,0,0,1,0-13.02336l43.73124-43.18435a9.70171,9.70171,0,0,1,13.64354.043h0a9.689,9.689,0,0,1,.00019,13.68669l-32.49607,32.49664a5.41338,5.41338,0,0,0,0,7.64652l32.31978,32.32016a9.418,9.418,0,0,1-6.66648,16.08412Z" transform="translate(-136.68918 -149.95753)" fill="#6c63ff"/><path d="M752.75859,431.41924a9.418,9.418,0,0,1-6.66648-16.08412L778.41189,383.015a5.41338,5.41338,0,0,0,0-7.64652L745.91582,342.8718a9.67776,9.67776,0,0,1,.00019-13.68669h0a9.70169,9.70169,0,0,1,13.64353-.043l43.73124,43.18435a9.15157,9.15157,0,0,1,0,13.02336l-43.90867,43.35929A9.39891,9.39891,0,0,1,752.75859,431.41924Z" transform="translate(-136.68918 -149.95753)" fill="#6c63ff"/></svg>
+          </div>
+          <div class="w-full sm:w-1/2 p-6 mt-6">
+            <div class="align-middle">
+              <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+                Reduce whitespace
+              </h3>
+              <p class="text-gray-600 mb-8">
+                Minify your scripts to reduce file size. Making it easier for you to share around.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white border-b py-8" id="testimonials">
+      <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Testimonials
+        </h1>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+              <p class="w-full text-gray-600 text-xs md:text-sm px-6">
+                _Dev
+              </p>
+              <div class="w-full font-bold text-xl text-gray-800 px-6">
+                The beautified tool, you never knew you needed.
+              </div>
+              <p class="text-gray-800 text-base px-6 mb-5">
+                P.S. Snowy is big ghey.
+              </p>
+            </a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+              <p class="w-full text-gray-600 text-xs md:text-sm px-6">
+                Candy
+              </p>
+              <div class="w-full font-bold text-xl text-gray-800 px-6">
+                I get a share right?
+              </div>
+              <p class="text-gray-800 text-base px-6 mb-5">
+                🤑🤑
+              </p>
+            </a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+              <p class="w-full text-gray-600 text-xs md:text-sm px-6">
+                Leaf
+              </p>
+              <div class="w-full font-bold text-xl text-gray-800 px-6">
+                2 years later.
+              </div>
+              <p class="text-gray-800 text-base px-6 mb-5">
+                I refuse to use it because it's your design 💝
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-gray-100 py-8" id="purchase">
+      <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Pricing
+        </h1>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+
+        <div class="flex flex-wrap">
+          <div class="w-full sm:w-full p-6 justify-center">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3 text-center">
+              Free Forever!
+            </h3>
+            <p class="text-gray-600 mb-8 text-center">
+              GSCMinify is a free to use program. If you feel like supporting development, you can donate below.
+            </p>
+            <div class="block align-middle mt-12 text-center">
+              <button onclick="btnClick();" class="lg:mx-0 mx-auto no-underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out gradient text-white">
+                Download
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
+          <g class="wave" fill="#f8fafc">
+            <path
+              d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"
+            ></path>
+          </g>
+          <g transform="translate(1.000000, 15.000000)" fill="#FFFFFF">
+            <g transform="translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) ">
+              <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
+              <path
+                d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+                opacity="0.100000001"
+              ></path>
+              <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" opacity="0.200000003"></path>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <section class="container mx-auto text-center py-6 mb-12">
+      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
+        Donate
+      </h1>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+      <h3 class="my-4 text-3xl leading-tight">
+        Fancy supporting the project?
+      </h3>
+      <button onclick="btnClick();" class="mx-auto lg:mx-0 hover:no-underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        Donate!
+      </button>
+    </section>
+    <!--Footer-->
+    <footer class="bg-white">
+      <div class="container mx-auto px-8">
+        <div class="w-full flex flex-col md:flex-row py-6">
+          <div class="flex-1 mb-6 text-black">
+            <a class="text-yellow-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+              <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.86 38.75">
+                <g>
+                  <polyline points="1.5 32.14 16.82 16.82 1.5 1.5" style="stroke:#2a2a31;stroke-miterlimit:10;fill:none;stroke-linecap:round;stroke-width:4px;" />
+                  <line class="code-blink" x1="20.93" y1="37.25" x2="41.36" y2="37.25" style="stroke:#ea3970;stroke-linejoin:round;fill:none;stroke-linecap:round;stroke-width:4px;" />
+                </g>
+              </svg>
+              GSCMinify
+            </a>
+            <p class="text-gray-500 mt-4">&copy; 2021 - Liam. All rights reserved.</p>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-500 md:mb-6">Links</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="https://infinityloader.com" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Infinity Loader</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-500 md:mb-6">Social</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="https://twitter.com/lierrmm" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Twitter</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="https://github.com/lierrmm" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Github</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script>
-        setTimeout(() => {
-            location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0";  
-        }, 5500);
+      var scrollpos = window.scrollY;
+      var header = document.getElementById("header");
+      var navcontent = document.getElementById("nav-content");
+      var navaction = document.getElementById("navAction");
+      var brandname = document.getElementById("brandname");
+      var toToggle = document.querySelectorAll(".toggleColour");
+
+      document.addEventListener("scroll", function () {
+        scrollpos = window.scrollY;
+
+        if (scrollpos > 10) {
+          header.classList.add("bg-white");
+          navaction.classList.remove("bg-white");
+          navaction.classList.add("gradient");
+          navaction.classList.remove("text-gray-800");
+          navaction.classList.add("text-white");
+          for (var i = 0; i < toToggle.length; i++) {
+            toToggle[i].classList.add("text-gray-800");
+            toToggle[i].classList.remove("text-white");
+          }
+          header.classList.add("shadow");
+          navcontent.classList.remove("bg-gray-100");
+          navcontent.classList.add("bg-white");
+        } else {
+          header.classList.remove("bg-white");
+          navaction.classList.remove("gradient");
+          navaction.classList.add("bg-white");
+          navaction.classList.remove("text-white");
+          navaction.classList.add("text-gray-800");
+          for (var i = 0; i < toToggle.length; i++) {
+            toToggle[i].classList.add("text-white");
+            toToggle[i].classList.remove("text-gray-800");
+          }
+
+          header.classList.remove("shadow");
+          navcontent.classList.remove("bg-white");
+          navcontent.classList.add("bg-gray-100");
+        }
+      });
+      var navMenuDiv = document.getElementById("nav-content");
+      var navMenu = document.getElementById("nav-toggle");
+
+      document.onclick = check;
+      function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+        if (!checkParent(target, navMenuDiv)) {
+          if (checkParent(target, navMenu)) {
+            if (navMenuDiv.classList.contains("hidden")) {
+              navMenuDiv.classList.remove("hidden");
+            } else {
+              navMenuDiv.classList.add("hidden");
+            }
+          } else {
+            navMenuDiv.classList.add("hidden");
+          }
+        }
+      }
+      function checkParent(t, elm) {
+        while (t.parentNode) {
+          if (t == elm) {
+            return true;
+          }
+          t = t.parentNode;
+        }
+        return false;
+      }
+
+      function btnClick() {
+        location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0";
+      }
     </script>
-</body>
+  </body>
 </html>
