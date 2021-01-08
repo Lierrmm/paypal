@@ -232,7 +232,7 @@
             </p>
             <div class="block align-middle mt-12 text-center">
               <button onclick="btnClick();" class="lg:mx-0 mx-auto no-underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out gradient text-white">
-                Download
+                Download (pre-release)
               </button>
             </div>
           </div>
@@ -381,7 +381,11 @@
       }
 
       function btnClick() {
-        location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0";
+        let a = document.createElement('a');
+        a.download = 'download';
+        a.href = 'https://github.com/Lierrmm/paypal/releases/download/0.0.1/gscminify.exe';
+        a.click();
+        delete a;
       }
 
       function donateClick() {
